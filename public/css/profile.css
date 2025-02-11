@@ -1,0 +1,1109 @@
+body {
+    font-family: 'Vazirmatn', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f0f4ff, #f0f4ff);
+    color: #333;
+    direction: ltr;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-container > * {
+    width: 100%;
+}
+
+
+.profile-header {
+    background: linear-gradient(90deg, #007BFF, #0056b3);
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 100%;
+}
+
+.profile-header img {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+border: 4px solid white;
+margin-left: 10px;
+margin-top: 70px; /* فاصله از بالا */
+transition: transform 0.3s ease;
+}
+
+
+.profile-header img:hover {
+    transform: scale(1.1);
+}
+
+.profile-header div {
+    text-align: left;
+    flex: 1;
+}
+
+
+
+
+
+.profile-header .info-icon {
+display: flex;
+flex-direction: column;
+align-items: flex-start; /* تنظیم محتوا به سمت شروع */
+background: rgba(255, 255, 255, 0.2);
+padding: 10px 100px;
+border-radius: 10px;
+color: white;
+font-size: 10px;
+position: relative; /* یا absolute اگر داخل کانتینر دیگر است */
+left: 0;
+right: 40px;
+width: 100%; /* عرض تمام کانتینر والد */
+box-sizing: border-box; /* برای محاسبه padding در عرض */
+}
+
+.profile-header .info-icon span {
+    margin-bottom: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .profile-header img {
+        margin: 0 auto 15px;
+    }
+
+    .profile-header div {
+        text-align: center;
+    }
+
+    .profile-header .info-icon {
+        margin-top: 10px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.payment-status {
+font-family: Arial, sans-serif;
+margin: 20px;
+padding: 20px;
+background-color: #f9f9f9;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border: 1px solid #ddd;
+}
+
+.payment-status h2 {
+text-align: center;
+margin-bottom: 15px;
+color: #333;
+}
+
+.payment-info {
+font-size: 16px;
+color: #555;
+text-align: center;
+margin-bottom: 20px;
+line-height: 1.8;
+}
+
+.payment-info strong {
+color: #d9534f;
+}
+
+.payment-action {
+text-align: center;
+}
+
+
+.payment-button {
+background-color: #4caf50;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+background-color: #45a049;
+}
+
+
+
+/* !$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S ----*/
+
+
+                
+.progress-container {
+    width: 80%;
+    background-color: #f3f3f3;
+    margin: 20px auto;
+    border-radius: 20px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(45deg, #00bcd4, #8e24aa);
+    width: 0%;
+    border-radius: 20px;
+    position: absolute;
+    animation: loading 2s linear infinite;
+}
+
+/* انیمیشن لودینگ */
+@keyframes loading {
+    0% {
+        left: -100%;
+        width: 50%;
+    }
+    50% {
+        left: 25%;
+        width: 50%;
+    }
+    100% {
+        left: 100%;
+        width: 50%;
+    }
+}
+
+.message {
+    font-size: 18px;
+    color: #ff9800;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+/* !$$$$$$$$$$$$$$$$$$$ */
+
+
+#projects-container, #admin-info {
+    max-width: 400px; /* حداکثر عرض هر بخش */
+    word-wrap: break-word; /* شکستن کلمات طولانی */
+    overflow-wrap: break-word; /* سازگاری با مرورگرهای قدیمی */
+    white-space: normal; /* نمایش معمولی متن */
+    margin-bottom: 20px; /* فاصله بین پروژه‌ها */
+  }
+
+  .project-item p {
+    line-height: 1.6; /* بهبود فاصله بین خطوط برای خوانایی بیشتر */
+    margin: 8px 0; /* فاصله مناسب بین پاراگراف‌ها */
+  }
+
+
+
+  #admin-info p {
+    font-size: 14px; /* کاهش اندازه متن در بخش اطلاعات مدیر */
+    color: #333;
+  }
+
+  .project-item p {
+    margin: 10px 0; /* فاصله بین پاراگراف‌ها */
+    line-height: 1.8; /* فاصله خطوط */
+    color: #555; /* رنگ خاکستری برای متن */
+  }
+
+  h3, h4, p {
+    text-align: center;
+  }
+
+
+
+
+  #admin-info p {
+    font-size: 14px; /* متن کوچک‌تر برای بخش اطلاعات مدیر */
+    color: #555; /* رنگ متن */
+  }
+
+
+  /*!$$$$$$$$$$$$$$$$ */
+
+
+             /* استایل‌های اصلی */
+             nav {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #d1d3d4;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 15px;
+                transition: all 0.3s ease;
+                width: 40px; /* عرض اولیه نوار فقط به اندازه دکمه همبرگر */
+                height: 20px; /* ارتفاع نوار نیز به اندازه دکمه همبرگر */
+            }
+    
+            /* دکمه همبرگر */
+            .burger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 20px;
+                width: 20px;  /* اندازه دکمه همبرگر */
+                cursor: pointer;
+                margin-bottom: 15px;
+                flex-shrink: 0;
+                align-items: center;
+                border: 2px solid #f4f5f7;
+                border-radius: 8px;
+                padding: 5px;
+                transition: all 0.3s ease;
+                background-color: #0056b3; /* بک‌گراند سفید */
+            }
+    
+            .burger__patty {
+                background-color: #f1f2f3;
+                height: 4px;
+                width: 100%;
+                border-radius: 2px;
+                transition: transform 0.3s, opacity 0.3s;
+            }
+    
+            /* زمانی که منو باز می‌شود */
+            nav.active {
+                width: 100vw; /* عرض کامل نوار */
+                height: 80vh; /* ارتفاع نوار به نصف صفحه */
+                border-radius: 0; /* حذف گردی گوشه‌ها */
+            }
+    
+            .burger.active .burger__patty:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+    
+            .burger.active .burger__patty:nth-child(2) {
+                opacity: 0;
+            }
+    
+            .burger.active .burger__patty:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+    
+            /* منوی اصلی */
+            .nav__list {
+                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+    
+            .nav__list.active {
+                display: flex;
+                max-height: 700px;
+            }
+    
+            .menu-item {
+                margin: 10px;
+                text-align: center;
+                transition: transform 0.3s ease, color 0.3s;
+                flex-basis: calc(33.33% - 20px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+    
+            .menu-item a {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                text-align: center;
+            }
+    
+            .material-icons {
+                font-size: 40px;
+                transition: transform 0.3s ease, color 0.3s ease;
+            }
+    
+            .menu-item span {
+                margin-top: 10px;
+                display: block;
+                font-size: 14px;
+                font-weight: bold;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+    
+            .menu-item:hover {
+                color: rgb(244, 52, 4);
+                transform: translateY(-5px);
+            }
+    
+            .menu-item:hover .material-icons {
+                transform: scale(1.2);
+            }
+    
+            .menu-item:hover span {
+                opacity: 1;
+            }
+            .robot-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        overflow-y: auto;
+        height: 1000px; /* افزایش ارتفاع به 500px */
+    }
+    
+    
+    .robot-container::-webkit-scrollbar {
+        display: none; /* پنهان کردن اسکرول بار */
+    }
+    
+            .robot-row {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 30px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+    
+            .robot-icon {
+                margin: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 120px;
+            }
+    
+            .robot-icon i {
+                font-size: 60px;
+                margin-bottom: 10px;
+                color: #333;
+            }
+    
+            .robot-icon p {
+                font-size: 14px;
+                font-weight: bold;
+                color: #555;
+            }
+    
+            /* دکمه بازگشت */
+            .back-button {
+                margin-top: 40px;
+                background-color: rgb(244, 52, 4);
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                display: none; /* مخفی در حالت پیش‌فرض */
+            }
+    
+            .back-button:hover {
+                background-color: #f44336;
+            }
+
+
+            /* !$$$$$$$$$$$$$$$$$ */
+
+
+
+              
+   .modal.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #f44336;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #f9f9f9;
+}
+
+.input-container label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 16px;
+    color: #999;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+ 
+
+
+/* !$$$$$$$$$$$$$$$$ */
+
+
+
+
+
+.tabs-container {
+    padding: 0 20px; /* فاصله کل بخش تب‌ها از چپ و راست */
+}
+.tabs {
+    display: flex;
+    gap: 10px; /* فاصله بین تب‌ها */
+    background: linear-gradient(90deg, #007bff00, #0057b300);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    justify-content: space-between;
+    padding: 10px 0; /* فاصله از بالا و پایین */
+}
+.tab {
+    flex: 1;
+    padding: 14px 20px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px; /* اندازه پیش‌فرض فونت */
+}
+.tab:hover {
+    background-color: #0184ef;
+    transform: translateY(-2px); /* افکت شناور روی هاور */
+}
+.tab.active {
+    background: linear-gradient(90deg, #dbeef7, #51daf3);
+    color: #0056b3;
+    font-weight: bold;
+}
+.tab-content {
+    padding: 20px;
+    display: none;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.tab-content.active {
+    display: block;
+}
+
+/* استایل مخصوص موبایل */
+@media (max-width: 768px) {
+    .tab {
+        font-size: 10px; /* کاهش اندازه فونت در موبایل */
+        padding: 10px 15px; /* کاهش پدینگ */
+    }
+    .tabs-container {
+        padding: 0 10px; /* کاهش فاصله کانتینر در موبایل */
+    }
+}
+
+
+
+
+/*  */
+
+
+
+
+
+
+
+
+
+
+                  
+
+/* تنظیمات عمومی */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+background-color: #f9f9f9;
+}
+
+p {
+margin: 10px 0;
+}
+
+strong {
+font-weight: bold;
+}
+
+/* استایل برای بخش‌های کلیدی */
+#total-price, #deposit-amount, #payment-button-amount, #project-title, #delivery-date, #admin-message {
+font-size: 1.1em;
+}
+
+/* استایل برای اطلاعات پرداخت */
+.payment-info {
+background-color: #e9f7ef;
+padding: 15px;
+border-radius: 8px;
+}
+
+.payment-action {
+margin-top: 20px;
+background-color: #f0f0f0;
+padding: 15px;
+border-radius: 8px;
+}
+
+.payment-button {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1.1em;
+}
+
+.payment-button:hover {
+background-color: #45a049;
+}
+
+.payment-action p {
+font-size: 1.2em;
+}
+
+/* استایل برای پروژه‌ها */
+#projects-container {
+margin-top: 40px;
+}
+
+.project-item {
+background-color: white;
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 10px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-item h4 {
+font-size: 1.5em;
+color: #333;
+}
+
+.project-item .project-details {
+margin-top: 15px;
+}
+
+.project-item .project-details h3 {
+font-size: 1.2em;
+margin-bottom: 10px;
+}
+
+/* Media Queries برای نمایش در صفحه‌های مختلف */
+@media screen and (max-width: 768px) {
+.payment-info, .payment-action, .project-item {
+padding: 10px;
+}
+
+.payment-button {
+padding: 8px 16px;
+font-size: 1em;
+}
+
+.project-item h4 {
+font-size: 1.3em;
+}
+
+.project-item .project-details h3 {
+font-size: 1.1em;
+}
+}
+
+@media screen and (max-width: 480px) {
+.payment-button {
+padding: 8px 14px;
+font-size: 0.9em;
+}
+
+.payment-action p {
+font-size: 1em;
+}
+
+.project-item h4 {
+font-size: 1.2em;
+}
+
+.project-item .project-details h3 {
+font-size: 1em;
+}
+}
+
+/* استایل پایه */
+
+/* محتوای تب */
+.tab-content {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تیترها */
+h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+
+
+/* متن پاراگراف */
+p {
+  font-size: 16px;
+  color: #6b6969;
+  line-height: 1.5;
+}
+#p-pay {
+    font-size: 16px;
+    color: #f1eded;
+    line-height: 1.5;
+  }
+
+/* چینش پروژه‌ها */
+#projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* دکمه‌ها */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background: #3498db;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+/* محتوا برای دکمه */
+#content {
+  display: none;
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+
+
+
+/* لودینگ با محتوای بیشتر */
+.advanced-loading {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    animation: fade-loading 1.5s infinite ease-in-out;
+    margin: 50px auto;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    animation: bar-loading 1.5s infinite ease-in-out;
+}
+
+.loading-bar:nth-child(2) {
+    width: 80%;
+    animation-delay: 0.2s;
+}
+
+.loading-bar:nth-child(3) {
+    width: 60%;
+    animation-delay: 0.4s;
+}
+
+.loading-bar:nth-child(4) {
+    width: 90%;
+    animation-delay: 0.6s;
+}
+
+/* انیمیشن بار لودینگ */
+@keyframes bar-loading {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+/* انیمیشن محو شدن برای لودینگ */
+@keyframes fade-loading {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* هدر */
+.headerr {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: fade-loading 1.5s infinite ease-in-out;
+    height: 60px;
+    width: 100%;
+}
+
+/* منو */
+.navi {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    height: 40px;
+}
+
+.navi a {
+    background-color: #e0e0e0;
+    height: 100%;
+    width: 100px;
+    border-radius: 5px;
+    animation: fade-loading 1.5s infinite ease-in-out;
+}
+
+/* محتوای اصلی */
+.content {
+    margin-top: 20px;
+    text-align: center;
+    animation: fade-loading 1.5s infinite ease-in-out;
+}
+
+.content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 5px;
+    animation: fade-loading 1.5s infinite ease-in-out;
+}
+
+.content p {
+    font-size: 18px;
+    color: #7f8c8d;
+    background-color: #e0e0e0;
+    height: 20px;
+    width: 250px;
+    margin: 20px auto;
+    border-radius: 5px;
+    animation: fade-loading 1.5s infinite ease-in-out;
+}
+
+/* فوتر */
+.footerr {
+    margin-top: auto;
+    text-align: center;
+    background-color: #e0e0e0;
+    height: 50px;
+    animation: fade-loading 1.5s infinite ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+.professional-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'IRANSans', sans-serif;
+}
+
+.professional-header {
+    background: linear-gradient(135deg, #0056b3, #007bff);
+    color: #f8f9fa;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.professional-header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.professional-header p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.payment-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.payment-card {
+    background: #f9f9f9;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.payment-card img {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.payment-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #212529;
+}
+
+.form-container {
+    display: none;
+    padding: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-container button:hover {
+    background: #004494;
+}
+
+.referral-code-box {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    text-align: center;
+    display: none;
+    width: 80%;
+}
+
+.referral-code-box p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.cta-section {
+    background: #f8f9fa;
+    padding: 25px;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+.cta-section h2 {
+    font-size: 20px;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 15px;
+    color: #495057;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background: #0056b3;
+    color: #ffffff;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #003d80;
+}

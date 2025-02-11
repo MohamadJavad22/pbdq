@@ -1,0 +1,369 @@
+/* تنظیمات پایه */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* از بین بردن اسکرول افقی */
+    overflow-y: auto; /* اسکرول عمودی فعال باشد */
+    width: 100%;
+    min-height: 100%; /* ارتفاع حداقل صفحه برابر با 100% */
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+* {
+    box-sizing: inherit; /* اعمال box-sizing به تمام المان‌ها */
+}
+
+
+
+#پرفایل i {
+    margin-right: 5px; /* فاصله بین آیکون و متن */
+    font-size: 18px; /* اندازه آیکون */
+    color: #333; /* رنگ آیکون */
+  }
+  
+
+
+/* هدر */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0A0A0A;
+    border-radius: 20px 20px 20px 20px;
+    max-width: 100%;
+    margin: 20px 20px 0; /* فاصله از بالا و دو طرف */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+
+/* عنوان داخل هدر */
+header h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: right; /* برای نمایش چپ‌چین روی موبایل */
+}
+
+/* بخش بعدی داخل هدر */
+header div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* لینک‌های داخل هدر */
+header a {
+    color: #F0F8FF;
+    text-decoration: none;
+    padding: 5px 15px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* افکت هاور لینک‌ها */
+header a:hover {
+    background-color: #fdfafa;
+}
+
+/* برای دستگاه‌های خیلی بزرگ */
+@media (min-width: 1440px) {
+    header {
+        padding: 20px 40px;
+    }
+
+    header h1 {
+        font-size: 2rem;  /* افزایش اندازه فونت برای نمایشگرهای بزرگ */
+        text-align: left; /* چپ‌چین کردن عنوان */
+    }
+
+    header a {
+        padding: 8px 20px;
+        font-size: 1.1rem;  /* تنظیم سایز فونت دکمه‌ها برای نمایشگرهای بزرگ */
+        text-align: left; /* چپ‌چین کردن دکمه‌ها */
+    }
+}
+
+/* برای صفحه نمایش‌های موبایل */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 25px;
+    }
+
+    header h1 {
+        font-size: 0.60rem;  /* سایز عنوان کوچک‌تر می‌شود */
+        margin-bottom: -20px;
+        text-align: left;   /* چپ‌چین کردن اسم وب‌سایت */
+    }
+
+    header div {
+        width: 100%;
+        justify-content: flex-end; /* دکمه‌ها راست‌چین */
+    }
+
+    header a {
+        font-size: 0.5rem;
+    }
+}
+
+
+
+
+/* تنظیمات container */
+.custom-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* تنظیمات برای iframe و المان‌های مرتبط */
+.custom-iframe-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* استایل‌های جعبه iframe */
+.custom-iframe-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #F0F8FF;
+    background-color: #F0F8FF;
+    box-shadow: 0 4px 12px #F0F8FF;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-iframe-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+.custom-iframe {
+    width: 100%;
+    height: 100%;
+    display: none;
+    border: none;
+    pointer-events: auto;
+}
+
+/* استایل جعبه اطلاعات */
+.custom-info-box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.custom-top-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.custom-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-views {
+    font-size: 16px;
+}
+
+.custom-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.custom-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.custom-heart-icon {
+    color: #fff;
+    font-size: 30px;
+}
+
+.custom-heart.liked .custom-heart-icon {
+    color: red;
+}
+
+.custom-like-count {
+    color: white;
+    font-size: 16px;
+}
+
+.custom-eye {
+    font-size: 24px;
+}
+
+.custom-bottom-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-create-btn-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.custom-create-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.custom-create-btn:hover {
+    background-color: #333;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.custom-fullscreen-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+    transition: background-color 0.2s ease;
+}
+
+.custom-fullscreen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    .custom-container {
+        grid-template-columns: 1fr;
+    }
+
+    .custom-info-box {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .custom-top-section {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .custom-create-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .custom-iframe {
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-iframe-wrapper {
+        gap: 25px;
+    }
+
+    .custom-iframe-box {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+
+#drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#iframe-path {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* افزایش ارتفاع آیفریم در حالت تمام‌صفحه برای موبایل */
+@media (max-width: 768px) {
+    .custom-iframe-wrapper:fullscreen iframe {
+        height: 100vh; /* تنظیم ارتفاع آیفریم برای موبایل (90% از ارتفاع صفحه) */
+    }
+}

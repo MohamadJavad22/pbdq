@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Chat Page</title>
+    <style>
+        /* استایل بخش تب کاربران */
+        /* استایل برای پنل چت */
+        .chat-sidebar {
+            width: 25%;
+            background-color: #ffffff;
+            border-right: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* اسکرول برای لیست کاربران */
+            height: 100vh; /* ارتفاع به 100vh تنظیم می‌شود */
+            padding: 10px;
+        }
+    
+        .chat-user-card {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+    
+        .chat-user-card:hover {
+            background-color: #f9f9f9;
+        }
+    
+        .chat-main-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #fff;
+            width: 75%;
+            height: 100vh; /* ارتفاع برای چت */
+        }
+    
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto; /* اسکرول برای پیام‌ها */
+            padding: 15px;
+            scroll-behavior: smooth;
+            height: calc(100vh - 120px); /* ارتفاع برای پیام‌ها */
+        }
+    
+        .chat-message {
+            margin-bottom: 10px;
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+    
+        .chat-message.sent {
+            background-color: #d1f1d1;
+            align-self: flex-end;
+            text-align: right;
+        }
+    
+        .chat-message.received {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            text-align: left;
+        }
+    
+        .chat-input-container {
+            display: flex;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            height: 60px;
+        }
+    
+        .chat-input-container input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+        }
+    
+        .chat-input-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    
+        .chat-input-container button:hover {
+            background-color: #45a049;
+        }
+    
+        .chat-container-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+    
+        /* ریسپانسیو برای موبایل */
+        @media (max-width: 768px) {
+            .chat-sidebar {
+                width: 100%; /* در موبایل پنل کاربران تمام صفحه می‌شود */
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #ccc; /* برای جدا کردن بخش‌ها */
+            }
+    
+            .chat-main-container {
+                width: 100%; /* چت به صورت تمام صفحه نمایش داده می‌شود */
+                height: auto;
+            }
+    
+            .chat-messages {
+                height: auto; /* پیام‌ها در موبایل ارتفاع خود را بر اساس تعداد پیام‌ها می‌گیرند */
+                padding: 10px;
+            }
+    
+            .chat-input-container {
+                padding: 10px;
+                height: 50px;
+            }
+    
+            .chat-input-container input {
+                padding: 8px;
+                font-size: 12px;
+            }
+    
+            .chat-input-container button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+    
+            .chat-message {
+                font-size: 12px; /* اندازه فونت برای موبایل کاهش می‌یابد */
+            }
+        }
+    
+        /* ریسپانسیو برای تبلت */
+        @media (max-width: 1024px) {
+            .chat-sidebar {
+                width: 40%; /* در تبلت پنل کاربران کمتر از موبایل نمایش داده می‌شود */
+            }
+    
+            .chat-main-container {
+                width: 60%; /* چت به اندازه پنل کاربران کاهش می‌یابد */
+            }
+    
+            .chat-messages {
+                height: calc(100vh - 150px); /* ارتفاع پیام‌ها در تبلت */
+            }
+        }
+    
+    </style>
+    
+</head>
+<body>
+
+        <div class="chat-container-wrapper">
+            <div class="chat-sidebar" id="users">
+                <!-- Users will be loaded here dynamically -->
+            </div>
+            <div class="chat-main-container" id="chat-container">
+                <div class="chat-messages" id="messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                // دریافت لیست کاربران از API
+                fetch('/get-users')
+                    .then(response => response.json())
+                    .then(data => {
+                        const usersContainer = document.getElementById('users');
+                        usersContainer.innerHTML = ''; // پاک کردن لیست قبلی
+                        data.forEach(user => {
+                            const userElement = document.createElement('div');
+                            userElement.classList.add('chat-user-card');
+                            userElement.innerHTML = `
+                                <p><strong>Name:</strong> ${user.fullname}</p>
+                                <p><strong>Email:</strong> ${user.email}</p>
+                                <p><strong>Username:</strong> ${user.username}</p>
+                            `;
+                            
+                            const button = document.createElement('button');
+                            button.textContent = 'Start Chat';
+                            button.addEventListener('click', () => startChat(user.id, user.fullname));
+        
+                            userElement.appendChild(button);
+                            usersContainer.appendChild(userElement);
+                        });
+                    })
+                    .catch(err => {
+                        console.error('Error fetching users:', err);
+                    });
+            };
+        
+            let currentUserId = null;
+            
+            function startChat(userId, userFullname) {
+                if (currentUserId === userId) return; // جلوگیری از سوئیچ به همان کاربر
+                
+                currentUserId = userId;
+                const chatContainer = document.getElementById('chat-container');
+                chatContainer.innerHTML = `
+                    <h2>Chat with ${userFullname}</h2>
+                    <div class="chat-messages" id="messages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="message-input" placeholder="Type your message...">
+                        <button onclick="sendMessage()">Send Message</button>
+                    </div>
+                `;
+            
+                fetch(`/get-messages/${userId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const messagesContainer = document.getElementById('messages');
+                        messagesContainer.innerHTML = ''; // پاک کردن پیام‌های قبلی
+                        data.forEach(msg => {
+                            const messageElement = document.createElement('div');
+                            messageElement.classList.add(msg.sender === 'admin' ? 'sent' : 'received');
+                            messageElement.textContent = `${msg.sender}: ${msg.text}`;
+                            messagesContainer.appendChild(messageElement);
+                        });
+                    })
+                    .catch(err => {
+                        console.error('Error fetching messages:', err);
+                    });
+            }
+            
+            function sendMessage() {
+                const messageInput = document.getElementById('message-input');
+                const messageText = messageInput.value.trim();
+            
+                if (!messageText) {
+                    alert('Please enter your message');
+                    return;
+                }
+            
+                const messageData = {
+                    fromUserId: 1, // شناسه مدیر (Admin ID)
+                    toUserId: currentUserId, // شناسه کاربری که با آن چت می‌کنیم
+                    text: messageText
+                };
+            
+                fetch('/send-message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(messageData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const messagesContainer = document.getElementById('messages');
+                        const newMessage = document.createElement('div');
+                        newMessage.classList.add('sent');
+                        newMessage.textContent = `Admin: ${messageText}`;
+                        messagesContainer.appendChild(newMessage);
+                        messageInput.value = ''; // پاک کردن ورودی
+                    } else {
+                        alert('Error sending message');
+                    }
+                })
+                .catch(err => {
+                    console.error('Error sending message:', err);
+                });
+            }
+        </script>
+        
+</body>
+</html>

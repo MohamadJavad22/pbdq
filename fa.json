@@ -1,0 +1,17 @@
+{
+    "greeting": "سلام",
+    "welcome": "به وب‌سایت ما خوش آمدید",
+    "iframeList": "لیست آیفریم‌ها",
+    "noIframes": "هیچ آیفریمی موجود نیست.",
+    "errorLoadingItems": "خطا در بارگذاری آیتم‌ها.",
+    "errorFetchingData": "خطا در دریافت داده‌ها.",
+    "fullscreen": "تمام صفحه",
+    "view": "بازدید",
+    "like": "لایک",
+    "title": "عنوان",
+    "viewMore": "مشاهده بیشتر",
+    "errorChangeLike": "خطا در تغییر وضعیت لایک.",
+    "errorFullscreen": "خطا در فعال‌سازی حالت تمام‌صفحه",
+    "errorUpdatingViewCount": "خطا در به‌روزرسانی تعداد بازدید."
+  }
+  

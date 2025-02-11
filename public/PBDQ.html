@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style-PBDQ.css">
+    <link rel="stylesheet" href="css/Orders.css">
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <button onclick="goBack()">بازگشت</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" data-tab="dashboard">پنل مدیریت</div>
+            <div class="tab" data-tab="analytics">تحلیل‌ها</div>
+            <div class="tab" data-tab="settings">تنظیمات</div>
+            <div class="tab" data-tab="orders">orders</div>
+            <div class="tab" data-tab="کاربران" onclick="window.location.href='PBDQchat.html';">کاربران</div>
+            <div class="tab" data-tab="ربات">ربات</div>
+            <div class="tab" data-tab="کارمندان">کارمندان</div>
+            <div class="tab" data-tab="settings">ویزیتورها</div>
+        </div>
+
+        <div id="dashboard" class="tab-content active">
+            <h1>مدیریت درخواست‌ها</h1>
+            <div class="admin-container">
+                <h1>پنل مدیریت</h1>
+                <div class="form-container">
+                    <h2>ایجاد آیتم جدید</h2>
+                    <form id="create-item-form">
+                        <input type="text" id="title" placeholder="عنوان" required>
+                        <input type="text" id="description" placeholder="توضیحات" required>
+                        <input type="text" id="iframeLink" placeholder="لینک آیفریم" required>
+                        <input type="text" id="iframeImage" placeholder="لینک تصویر آیفریم" required>
+                        <input type="number" id="row" placeholder="ردیف" required>
+                        <button type="submit">افزودن آیتم</button>
+                    </form>
+                </div>
+                <div class="items-list">
+                    <h2>آیتم‌ها</h2>
+                    <table id="items-table">
+                        <thead>
+                            <tr>
+                                <th>عنوان</th>
+                                <th>توضیحات</th>
+                                <th>لینک آیفریم</th>
+                                <th>تصویر آیفریم</th>
+                                <th>تعداد بازدید</th>
+                                <th>تعداد لایک</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+        <!-- سایر تب‌ها مانند analytics, settings و ... -->
+        <div id="analytics" class="tab-content">
+            <h2>تحلیل‌ها</h2>
+            <p>در این بخش می‌توانید تحلیل‌های مربوط به کاربران و عملکرد سیستم را مشاهده کنید.</p>
+        </div>
+            
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+        <div id="settings" class="tab-content">
+            <h2>تنظیمات</h2>
+        </div>
+            <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+        <div id="کاربران" class="tab-content">
+            <h2>کاربران</h2>
+            
+   
+        </div>
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+<!-- سایر تب‌ها -->
+<div id="ربات" class="tab-content">
+    <h2 class="page-title">پنل مدیریت ربات</h2>
+
+
+    <form id="add-response-form">
+        <label for="user-message">پیام کاربر:</label>
+        <input type="text" id="user-message" name="user_message" required />
+        <br>
+        <label for="bot-reply">پاسخ ربات:</label>
+        <input type="text" id="bot-reply" name="bot_reply" required />
+        <br>
+        <button type="submit">افزودن پاسخ</button>
+    </form>
+
+    <h2 class="response-list-title">پاسخ‌های ذخیره‌شده</h2>
+    <table id="responses-table">
+        <thead>
+            <tr>
+                <th>پیام کاربر</th>
+                <th>پاسخ ربات</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- داده‌های جدول اینجا قرار می‌گیرند -->
+        </tbody>
+    </table>
+</div>
+
+            <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+
+        <div id="orders" class="tab-content">
+            <h2>orders</h2>
+            
+            <h1>مدیریت اطلاعات فرم‌ها</h1>
+            <table id="dataTable">
+      
+                <div class="header">
+                    <h1>مدیریت اطلاعات فرم‌ها</h1>
+                </div>
+            
+                <div id="orders" class="tab-content">
+                    
+                    <!-- اطلاعات از سرور در اینجا بارگذاری می‌شود -->
+                </div>
+            </table>
+            
+        </div>
+    
+    </div>
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <script>
+        // تغییر تب‌ها
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    </script>
+
+
+
+    
+    
+    <script type="module" src="js/PBDQ.js"></script>
+    <script type="module" src="js/User-information.js"></script>
+    <script type="module" src="js/Orders.js"></script>
+
+</body>
+</html> 
