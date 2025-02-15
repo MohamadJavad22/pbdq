@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزئیات آیفریم</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* استایل برای نوتیفیکیشن */
+        #notification {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 250px;
+            opacity: 1;
+            transform: scale(1);
+            transition: transform 1s ease, width 1s ease;
+        }
+
+        /* استایل برای کوچک شدن نوتیفیکیشن */
+        #notification.shrink {
+            transform: scale(0.5);
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <style>
+#designForm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#designForm h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#formDesign {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, select, textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#advertisementConsent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#advertisementConsent label {
+    font-size: 14px;
+    color: #666;
+}
+
+#advertisementConsent input {
+    transform: scale(1.2);
+}
+
+input[type="tel"],
+input[type="email"],
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+    color: #007bff;
+}
+
+    </style>
+
+
+
+
+
+<div id="designForm">
+        <!-- نوتیفیکیشن -->
+        <div id="notification">
+            <b>آی‌دی:</b> <span id="notification-id"></span><br>
+            <b>عنوان:</b> <span id="notification-title"></span>
+        </div>
+    
+    <button onclick="GoBack()">بازگشت</button>
+
+    <script>
+        function GoBack() {
+            window.history.back();
+        }
+    </script>
+    <h2>فرم جامع درخواست طراحی سایت</h2>
+    <form id="formDesign">
+        <!-- نام پروژه -->
+        <input type="text" id="projectName" name="projectName" placeholder="نام پروژه" required>
+
+        <!-- توضیحات پروژه -->
+        <textarea id="projectDescription" name="projectDescription" placeholder="توضیحات پروژه" rows="4" required></textarea>
+
+        <!-- نوع سایت -->
+        <label for="siteType">نوع سایت:</label>
+        <select id="siteType" name="siteType" required>
+            <option value="" disabled selected>انتخاب کنید...</option>
+            <option value="personal">شخصی</option>
+            <option value="business">شرکتی</option>
+            <option value="ecommerce">فروشگاهی</option>
+            <option value="blog">وبلاگ</option>
+            <option value="portfolio">نمونه کار</option>
+            <option value="educational">آموزشی</option>
+            <option value="forum">فروم</option>
+            <option value="socialMedia">شبکه اجتماعی</option>
+        </select>
+
+        <!-- زبان‌های مورد نیاز -->
+        <label>زبان‌های برنامه‌نویسی:</label>
+        <div>
+            <input type="checkbox" id="html" name="languages" value="HTML">
+            <label for="html">HTML</label>
+            <input type="checkbox" id="css" name="languages" value="CSS">
+            <label for="css">CSS</label>
+            <input type="checkbox" id="js" name="languages" value="JavaScript">
+            <label for="js">JavaScript</label>
+            <input type="checkbox" id="php" name="languages" value="PHP">
+            <label for="php">PHP</label>
+            <input type="checkbox" id="python" name="languages" value="Python">
+            <label for="python">Python</label>
+            <input type="checkbox" id="java" name="languages" value="Java">
+            <label for="java">Java</label>
+        </div>
+
+        <!-- ویژگی‌های اضافی -->
+        <label>ویژگی‌های اضافی:</label>
+        <div>
+            <input type="checkbox" id="seo" name="features" value="SEO">
+            <label for="seo">بهینه‌سازی موتور جستجو (SEO)</label>
+            <input type="checkbox" id="responsive" name="features" value="Responsive">
+            <label for="responsive">ریسپانسیو</label>
+            <input type="checkbox" id="ecommerce" name="features" value="E-commerce">
+            <label for="ecommerce">فروش آنلاین</label>
+            <input type="checkbox" id="security" name="features" value="Security">
+            <label for="security">امنیت بالا</label>
+            <input type="checkbox" id="multilingual" name="features" value="Multilingual">
+            <label for="multilingual">چند زبانه</label>
+        </div>
+
+        <!-- شماره تماس -->
+        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="شماره تماس" required>
+
+        <!-- ایمیل -->
+        <input type="email" id="email" name="email" placeholder="ایمیل" required>
+
+        <!-- سوالات دیگر -->
+        <label for="otherQuestions">آیا سوال یا درخواست دیگری دارید؟</label>
+        <textarea id="otherQuestions" name="otherQuestions" placeholder="پیشنهادات یا توضیحات اضافه" rows="4"></textarea>
+
+        <!-- اجازه برای تبلیغات و معرفی -->
+        <div id="advertisementConsent">
+            <input type="checkbox" id="allowAds" name="allowAds" required>
+            <label for="allowAds">
+                من موافقت می‌کنم که وب‌سایت من برای تبلیغات و معرفی در سایر وب‌سایت‌ها استفاده شود.
+            </label>
+        </div>
+            <!-- رنگ‌ها -->
+            <label>انتخاب رنگ‌ها:</label>
+            <div>
+                <input type="color" name="colors" value="#ff0000"> <!-- رنگ اول -->
+                <input type="color" name="colors" value="#00ff00"> <!-- رنگ دوم -->
+                <input type="color" name="colors" value="#0000ff"> <!-- رنگ سوم -->
+            </div>
+        <!-- دکمه ارسال -->
+        <button type="submit">ارسال درخواست</button>
+    </form>
+</div>
+
+
+
+
+
+
+<style>
+
+    #invoice {
+        display: none;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        direction: rtl;
+    }
+    h3 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+    p {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+    p strong {
+        color: #333;
+    }
+    span {
+        color: #555;
+    }
+    #invoiceDate {
+        text-align: center;
+        margin-top: 20px;
+        color: #888;
+        font-size: 0.9em;
+    }
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+</style>
+  <!-- نمایش فاکتور -->
+  <div id="invoice">
+    <h3>فاکتور درخواست طراحی سایت</h3>
+    <p><strong>نام پروژه:</strong> <span id="invoiceProjectName"></span></p>
+    <p><strong>توضیحات پروژه:</strong> <span id="invoiceProjectDescription"></span></p>
+    <p><strong>نوع سایت:</strong> <span id="invoiceSiteType"></span></p>
+    <p><strong>زبان‌های برنامه‌نویسی:</strong> <span id="invoiceLanguages"></span></p>
+    <p><strong>ویژگی‌های اضافی:</strong> <span id="invoiceFeatures"></span></p>
+    <p><strong>شماره تماس:</strong> <span id="invoicePhoneNumber"></span></p>
+    <p><strong>ایمیل:</strong> <span id="invoiceEmail"></span></p>
+    <p><strong>پیشنهادات یا توضیحات اضافی:</strong> <span id="invoiceOtherQuestions"></span></p>
+    <p><strong>نوتیفیکیشن:</strong> <span id="invoiceNotification"></span></p>
+    <p><strong>رنگ‌ها:</strong> <span id="invoiceColors"></span></p>
+    <p id="invoiceDate"></p>
+    
+    
+    
+    
+    <button onclick="goBack()">پایان</button>
+
+
+<!-- دکمه آیکن پرینتر -->
+<a href="#" class="btn" onclick="printInvoice()">
+    <i class="fas fa-print"></i>
+</a>
+
+</div>
+
+<script>
+
+    // تابع چاپ فاکتور
+    function printInvoice() {
+        window.print();
+    }
+
+        function goBack() {
+            window.location="profile.html"
+        }
+    </script>
+</div>
+
+<style>
+    #invoice {
+      max-width: 400px; /* حداکثر عرضی که متن‌ها باید محدود شوند */
+      word-wrap: break-word; /* شکست کلمات طولانی */
+      overflow-wrap: break-word; /* پشتیبانی از مرورگرهای قدیمی‌تر */
+    }
+  
+    #invoice p {
+      white-space: normal; /* جلوگیری از نمایش متن در یک خط */
+      line-height: 1.5; /* بهبود خوانایی با تنظیم فاصله خطوط */
+    }
+  
+    #invoice h3 {
+      text-align: center; /* عنوان را در وسط قرار دهید */
+      margin-bottom: 20px;
+    }
+  </style>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- ?______________ربات چت ___________________! -->
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+
+
+    <style>
+        .message {
+            position: fixed;
+            right: 20px;
+            max-width: 300px;
+            background-color: #e6e6e6;
+            color: #333;
+            padding: 10px 15px;
+            margin-top: 130px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.4s ease-out;
+            z-index: 999;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .input-container {
+            display: flex;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            align-items: center;
+            z-index: 10;
+        }
+    
+        .chat-input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    
+        .send-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    
+        /* دکمه Signup */
+        .signup-button {
+            position: fixed;
+            right: 20px;
+            bottom: 80px; /* کمی فاصله برای قرارگیری دکمه بالای فیلد */
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #000000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+    
+        .signup-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+  <button id="signupButton" class="signup-button" onclick="goToHome()">Home</button>
+
+  <div class="input-container">
+      <input type="text" id="chatInput" class="chat-input" placeholder="پیام خود را بنویسید...">
+      <button class="send-button" onclick="sendMessage()">ارسال</button>
+  </div>
+  
+  <script>
+      const chatInput = document.getElementById('chatInput');
+      const signupButton = document.getElementById('signupButton');
+      let messages = [];
+      let messageTopOffset = 20;
+  
+      // تغییر دکمه به Home
+      function goToHome() {
+          window.location = 'index.html'; // لینک صفحه‌ی Home
+      }
+  
+      // بررسی کلیک دکمه Signup
+      if (localStorage.getItem('signupClicked') === 'true') {
+          signupButton.innerHTML = 'Home';
+          signupButton.setAttribute('onclick', 'goToHome()');
+      }
+  
+    
+        function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+    
+            chatInput.value = '';
+    
+            // شبیه‌سازی دریافت پیام از سرور
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showBotMessage(data.reply);
+            })
+            .catch(() => {
+                showBotMessage('خطا در ارتباط با سرور.');
+            });
+        }
+    
+        function showBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.style.top = `${messageTopOffset}px`;
+            messageDiv.textContent = text;
+            document.body.appendChild(messageDiv);
+            
+            messages.push(messageDiv);
+            messageTopOffset += messageDiv.offsetHeight + 10;
+    
+            // حذف پیام پس از 30 ثانیه
+            setTimeout(() => {
+                messageDiv.remove();
+                messages = messages.filter(msg => msg !== messageDiv); // حذف پیام از آرایه
+                updateMessagePositions(); // به‌روزرسانی موقعیت باقی‌مانده پیام‌ها
+            }, 10000);
+        }
+    
+        function updateMessagePositions() {
+            let currentOffset = 20;
+            messages.forEach(msg => {
+                msg.style.top = `${currentOffset}px`;
+                currentOffset += msg.offsetHeight + 10;
+            });
+            messageTopOffset = currentOffset; // به‌روزرسانی موقعیت آخرین پیام
+        }
+    
+
+    </script>
+
+
+
+
+
+
+<script type="module" src="js/view-more.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه کاربر</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
+
+</head>
+
+
+<body>
+    
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+    <title>Document</title>
+</head>
+
+<script>
+    // توابع برای شناسایی کاربر
+
+    // تابع برای ارسال اطلاعات به سرور
+    function identifyVisitor() {
+        const visitorId = Cookies.get('visitor_id'); // چک کردن کوکی موجود
+        const cookieId = Cookies.get('cookie_id') || generateCookieId(); // چک کردن یا ایجاد یک cookie_id جدید
+        const userAgent = navigator.userAgent; // استخراج userAgent از مرورگر
+
+        // در صورتی که visitor_id موجود نباشد، آن را ایجاد می‌کنیم
+        if (!visitorId) {
+            const newVisitorId = 'visitor_' + Date.now(); // شناسه منحصر به فرد برای بازدیدکننده
+            Cookies.set('visitor_id', newVisitorId, { expires: 365 }); // ذخیره visitorId در کوکی
+            console.log('New visitor identified with ID:', newVisitorId);
+        }
+
+        // ارسال داده‌ها به سرور
+        fetch('http://localhost:3000/visitor', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                visitorId: Cookies.get('visitor_id'),
+                cookieId: cookieId,
+                userAgent: userAgent
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response from server:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    // تابع برای ایجاد یک cookie_id جدید
+    function generateCookieId() {
+        const cookieId = 'cookie_' + Math.random().toString(36).substr(2, 9);
+        Cookies.set('cookie_id', cookieId, { expires: 365 });
+        console.log('New cookie created with ID:', cookieId);
+        return cookieId;
+    }
+
+    // فراخوانی تابع شناسایی
+    window.onload = identifyVisitor;
+</script>
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   هدر  -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+        <header id="header">
+            <img src="image/Screenshot 2025-01-06 134014.jpeg" alt="Logo">
+            <style>
+                img {
+                  width: 100px;
+                  height: auto;
+                }
+              
+                @media (max-width: 768px) { /* برای موبایل */
+                  img {
+                    width: 75px; /* سایز کوچکتر برای موبایل */
+                    margin-bottom: -10px;
+
+
+                  }
+                }
+              </style>
+
+            <h1 style="color: #ffffff; background-color: #0A0A0A; padding: 10px;">
+                <span style="color: #4B4B4B;">P</span>
+                <span style="color: #5A5A5A; position: relative; top: 15px;">c</span>
+                <span style="color: #6A6A6A;">B</span>
+                <span style="color: #7A7A7A; position: relative; top: 15px;">o</span>
+                <span style="color: #8A8A8A;">D</span>
+                <span style="color: #9A9A9A; position: relative; top: 15px;">m</span>
+                <span style="color: #AAAAAA;">Q</span>
+            </h1>
+        
+        <div>
+            <a id="Home" href="#">Home</a>
+
+            <a id="About" href="#">About</a>
+            <a id="Contact" href="#">Contact</a>
+        </div>
+
+
+        </header>
+
+
+
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   متن اصلی    -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+  <div class="content">
+    <h1 style="color: #787777; text-transform: uppercase;" class="text-uppercase iq-font-white iq-tw-3">
+      We are building a <b class="iq-tw-7" style="color: #A9A9A9;">software</b> to help
+    </h1>
+    </div>
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   لگو موشن    -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <video id="responsive-video" autoplay muted playsinline>
+        <source src="0106_1_.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+      
+      <style>
+        /* استایل‌های CSS برای ویدیو */
+        #responsive-video {
+          border-radius: 100px;
+          position: fixed; /* ویدیو در موقعیت ثابت قرار می‌گیرد */
+          top: 50%; /* ویدیو در وسط صفحه عمودی */
+          left: 50%; /* ویدیو در وسط صفحه افقی */
+          transform: translate(-50%, -50%); /* ویدیو به طور دقیق در مرکز قرار می‌گیرد */
+          width: 30vw; /* عرض ویدیو به 80% عرض صفحه */
+          height: auto; /* ارتفاع متناسب با عرض */
+          object-fit: cover; /* ویدیو به صورت کامل پر می‌شود */
+          opacity: 0; /* ویدیو در ابتدا مخفی است */
+          transition: opacity 1s ease; /* افکت تغییر تدریجی برای نمایش */
+          background: transparent; /* اطمینان از اینکه پس‌زمینه شفاف است */
+          border: none; /* حذف هرگونه حاشیه */
+          z-index: 9999; /* اطمینان از اینکه ویدیو در بالای تمام محتویات قرار گیرد */
+        }
+      
+        /* به محض بارگذاری ویدیو، آن را نمایان می‌کنیم */
+        #responsive-video.loaded {
+          opacity: 1;
+        }
+      </style>
+      
+      <script>
+        const video = document.getElementById('responsive-video');
+      
+        // این تابع برای شروع پخش ویدیو و مخفی کردن آن پس از پایان پخش است
+        function handleVideoEnd() {
+          // پس از پایان ویدیو، ویدیو مخفی می‌شود
+          video.style.display = 'none';
+        }
+      
+        // هنگامی که ویدیو بارگذاری شد، آن را به حالت قابل مشاهده تغییر می‌دهیم
+        video.addEventListener('canplay', () => {
+          video.classList.add('loaded');
+        });
+      
+        // شروع به پخش ویدیو پس از بارگذاری صفحه
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            video.play().catch(error => {
+              console.error("Error playing video:", error);
+            });
+          }, 1000); // تأخیر یک ثانیه‌ای برای اطمینان از بارگذاری صحیح
+        });
+      
+        // رویداد زمانی که ویدیو تمام می‌شود
+        video.addEventListener('ended', handleVideoEnd);
+      </script>
+      
+      
+      
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    ویدیئو   -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+    <div style="width: 100%; height: auto; overflow: hidden;">
+        <img src="image/Pbdq (1).png" alt="Image Description" style="width: 100%; height: auto; display: block;" />
+    </div>
+    
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   المان ذرات   -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <style>
+
+
+        /* تنظیم پس‌زمینه ذرات */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: difference; /* تداخل رنگ‌ها */
+      
+          }
+      
+          /* محتوای اصلی */
+          .content {
+            position: relative;
+            z-index: 1; /* بالاتر از ذرات */
+            text-align: center;
+            padding: 20px;
+          }
+        </style>
+    <div id="particles-js"></div>
+
+<style>
+  #particles-js {
+  position: fixed; /* استفاده از fixed تا همیشه در صفحه باقی بمونه */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100 درصد عرض صفحه */
+  height: 100vh; /* 100 درصد ارتفاع صفحه */
+  z-index: 9999; /* قرار دادن در بالاترین لایه */
+  pointer-events: none; /* جلوگیری از ممانعت در تعاملات */
+}
+
+</style>
+
+<script>
+particlesJS('particles-js', { 
+  "particles": {
+    "number": {
+      "value": 20, /* افزایش تعداد ذرات */
+      "density": { "enable": true, "value_area": 1000 } /* تنظیم چگالی */
+    },
+    "color": { "value": "#000000" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 2.7 }, /* کاهش شفافیت */
+    "size": { "value": 4, "random": true },
+    "line_linked": { 
+      "enable": true,
+      "distance": 130, /* کاهش فاصله بین ذرات */
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 2
+    },
+    "move": { 
+      "enable": true,
+      "speed": 2
+    }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": { 
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": { 
+        "enable": true,
+        "mode": "push"
+      }
+    }
+  },
+  "retina_detect": true,
+});
+</script>
+
+
+
+
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     نوار دسته ها    -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+<style>
+
+
+    .navbarrrr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #9f9f9f00, #aaaaaa64, #9f9f9f00); /* رنگ آلومینیومی مدرن */
+        height: 60px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+        border-radius: 15px;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .navbarrrr .iconss {
+        margin: 0 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+    }
+
+    .navbarrrr .iconss:hover {
+        transform: translateY(-5px);
+        opacity: 0.8;
+    }
+
+    /* آیکن 9 نقطه مربعی */
+    .grid-iconss {
+        display: grid;
+        grid-template-columns: repeat(3, 10px);
+        grid-template-rows: repeat(3, 10px);
+        gap: 3px;
+    }
+    .grid-iconss div {
+        background-color: #333;
+        border-radius: 3px;
+    }
+
+    /* آیکن‌ها */
+    .navbarrrr .iconss i {
+        font-size: 34px;
+        color: #333;
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .navbarrrr .iconss i:hover {
+        transform: scale(1.2);
+        color: #007bff; /* رنگ آبی برای هور */
+    }
+
+</style>
+
+<div class="navbarrrr">
+
+
+          <div class="iconss">
+            <i class="fas fa-wallet"></i>
+        </div>
+
+
+        
+    <!-- آیکن 1: 9 نقطه (نمایش اپ‌ها) -->
+    <div class="iconss">
+        <div class="grid-iconss">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+    </div>
+
+
+
+    <!-- آیکن 3: افزونه‌ها (آیکن ساختنی) -->
+    <div class="iconss">
+        <i class="fas fa-handshake"></i>
+    </div>
+
+
+    
+</div>
+
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  کارت های دسته بندی    -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <style>
+        /* کانتینر کارت‌ها */
+        .card-container {
+            display: flex;
+            gap: 16px; /* فاصله بین کارت‌ها */
+            overflow-x: auto; /* فعال کردن اسکرول افقی */
+            padding: 16px;
+            width: 100%; /* عرض کامل کانتینر */
+            scroll-snap-type: x mandatory; /* اسنپ به کارت‌ها */
+            -webkit-overflow-scrolling: touch; /* اسکرول نرم برای موبایل */
+            scrollbar-width: none; /* مخفی کردن اسکرول در فایرفاکس */
+        }
+        
+        .card-container::-webkit-scrollbar {
+            display: none; /* مخفی کردن اسکرول‌بار */
+        }
+        
+        /* کارت‌ها */
+        .card {
+            flex: 0 0 auto; /* جلوگیری از تغییر اندازه کارت‌ها */
+            width: 220px; /* عرض کارت */
+            background-color: #fff;
+            border: 1px solid #ddd; /* رنگ ملایم‌تر برای لبه‌ها */
+            border-radius: 12px; /* گوشه‌های گردتر */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه کارت */
+            overflow: hidden; /* محتوای اضافی کارت‌ها مخفی */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن‌های هاور */
+            scroll-snap-align: start; /* اسنپ به شروع کارت */
+        }
+        
+        .card:hover {
+            transform: translateY(-8px); /* بلند شدن کارت */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر */
+        }
+        
+        /* هدر کارت */
+        .card-header {
+            background-color: #333; /* رنگ تیره برای هدر */
+            color: #fff; /* رنگ متن سفید */
+            padding: 12px;
+            text-align: center;
+            font-size: 1rem; /* اندازه استاندارد متن */
+            font-weight: bold;
+        }
+        
+        /* محتوای کارت */
+        .card-body {
+            padding: 16px;
+            color: #555; /* رنگ ملایم‌تر متن */
+            font-size: 0.9rem; /* اندازه استاندارد متن */
+            line-height: 1.5;
+        }
+        
+        .card-body p {
+            margin: 0;
+        }
+        
+        /* تنظیمات واکنش‌گرا */
+        @media (max-width: 1024px) {
+            .card-container {
+                gap: 12px; /* فاصله کمتر بین کارت‌ها */
+            }
+        
+            .card {
+                width: 200px; /* عرض کوچکتر کارت‌ها */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-container {
+                gap: 10px; /* فاصله کمتر برای تبلت */
+                padding: 12px;
+            }
+        
+            .card {
+                width: 180px; /* عرض کوچکتر برای تبلت */
+            }
+        
+            .card-header {
+                font-size: 0.9rem; /* اندازه کوچکتر برای متن هدر */
+            }
+        
+            .card-body {
+                font-size: 0.8rem; /* اندازه کوچکتر متن */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card-container {
+                gap: 8px; /* فاصله کمتر برای موبایل */
+                padding: 8px;
+            }
+        
+            .card {
+                width: 160px; /* عرض کوچکتر برای موبایل */
+            }
+        
+            .card-header {
+                font-size: 0.85rem;
+            }
+        
+            .card-body {
+                font-size: 0.75rem; /* متن کوچک‌تر */
+            }
+        }
+    
+    
+        .card-container.active {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+    
+    .card-container {
+        cursor: grab;
+        cursor: -webkit-grab;
+    }
+    .card, .card-body {
+    user-select: none; /* جلوگیری از انتخاب متن */
+}
+
+        </style>
+
+ <div class="card-container"id="target">
+
+    <div class="card" data-id="1">
+        <div class="card-header">
+            <h3><i class="fa fa-cogs"></i> Management System</h3>
+        </div>
+        <div class="card-body">
+            <p>Resource and process management</p>
+        </div>
+    </div>
+    <div class="card" data-id="2">
+        <div class="card-header">
+            <h3><i class="fa fa-store"></i> Store</h3>
+        </div>
+        <div class="card-body">
+            <p>Online product sales</p>
+        </div>
+    </div>
+    <div class="card" data-id="3">
+        <div class="card-header">
+            <h3><i class="fa fa-utensils"></i> Restaurant</h3>
+        </div>
+        <div class="card-body">
+            <p>Online food ordering</p>
+        </div>
+    </div>
+    <div class="card" data-id="4">
+        <div class="card-header">
+            <h3><i class="fa fa-shopping-cart"></i> Online Shop</h3>
+        </div>
+        <div class="card-body">
+            <p>Online shopping and delivery</p>
+        </div>
+    </div>
+    <div class="card" data-id="5">
+        <div class="card-header">
+            <h3><i class="fa fa-coffee"></i> Cafe</h3>
+        </div>
+        <div class="card-body">
+            <p>Online reservations and menu</p>
+        </div>
+    </div>
+    <div class="card" data-id="6">
+        <div class="card-header">
+            <h3><i class="fa fa-vr-cardboard"></i> Metaverse</h3>
+        </div>
+        <div class="card-body">
+            <p>Access to virtual spaces</p>
+        </div>
+    </div>
+    <div class="card" data-id="7">
+        <div class="card-header">
+            <h3><i class="fa fa-stethoscope"></i> Healthcare</h3>
+        </div>
+        <div class="card-body">
+            <p>Appointment scheduling</p>
+        </div>
+    </div>
+    <div class="card" data-id="8">
+        <div class="card-header">
+            <h3><i class="fa fa-dumbbell"></i> Gym</h3>
+        </div>
+        <div class="card-body">
+            <p>Membership and workout programs</p>
+        </div>
+    </div>
+    <div class="card" data-id="9">
+        <div class="card-header">
+            <h3><i class="fa fa-pencil-alt"></i> Blog</h3>
+        </div>
+        <div class="card-body">
+            <p>Publishing new content</p>
+        </div>
+    </div>
+    <div class="card" data-id="10">
+        <div class="card-header">
+            <h3><i class="fa fa-bed"></i> Hotel & Tour</h3>
+        </div>
+        <div class="card-body">
+            <p>Room and tour bookings</p>
+        </div>
+    </div>
+    <div class="card" data-id="11">
+        <div class="card-header">
+            <h3><i class="fa fa-home"></i> Real Estate & Villas</h3>
+        </div>
+        <div class="card-body">
+            <p>Property listings and consultations</p>
+        </div>
+    </div>
+    <div class="card" data-id="12">
+        <div class="card-header">
+            <h3><i class="fa fa-cut"></i> Beauty Salon</h3>
+        </div>
+        <div class="card-body">
+            <p>Appointments and services</p>
+        </div>
+    </div>
+    <div class="card" data-id="13">
+        <div class="card-header">
+            <h3><i class="fa fa-briefcase"></i> Branding</h3>
+        </div>
+        <div class="card-body">
+            <p>Brand and product introduction</p>
+        </div>
+    </div>
+</div>
+
+    <script>
+
+
+// انتخاب تمام کارت‌ها
+const staticCards = document.querySelectorAll('.card');
+
+// اضافه کردن رویداد کلیک به کارت‌ها
+staticCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const cardTitle = card.querySelector('.card-header h3').textContent.trim(); // گرفتن عنوان کارت
+        const allTargets = document.querySelectorAll('[id^="custom-iframe-box-"]'); // یافتن تمام المان‌های داینامیک
+
+        let targetElement = null;
+
+        // جستجوی المان هدف بر اساس شباهت نام
+        allTargets.forEach(target => {
+            const targetTitle = target.getAttribute('data-title'); // فرض: هر المان داینامیک data-title دارد
+            if (targetTitle && targetTitle.trim() === cardTitle) {
+                targetElement = target;
+            }
+        });
+
+        if (targetElement) {
+            // اسکرول به المان هدف با سرعت کم
+            smoothScrollTo(targetElement, 5000, 0.5); // سرعت پایین‌تر با 5000 میلی‌ثانیه و 0.5 سرعت
+
+            // افکت هایلایت برای تأکید
+            targetElement.style.border = '2px solid blue';
+            setTimeout(() => {
+                targetElement.style.border = ''; // حذف افکت پس از 3 ثانیه
+            }, 3000);
+        } else {
+            console.error('Target element not found for title:', cardTitle);
+        }
+    });
+});
+
+// تابع اسکرول به موقعیت هدف با سرعت دلخواه
+function smoothScrollTo(element, duration = 2000, speed = 1) {
+    const targetPosition = element.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop); // موقعیت هدف
+    const startPosition = window.pageYOffset || document.documentElement.scrollTop; // موقعیت فعلی
+    const distance = targetPosition - startPosition; // فاصله‌ای که باید طی شود
+    let startTime = null;
+
+    function scrollStep(currentTime) {
+        if (!startTime) startTime = currentTime; // ثبت زمان شروع
+
+        const timeElapsed = currentTime - startTime; // زمان سپری‌شده
+        const progress = Math.min(timeElapsed / (duration * speed), 1); // محاسبه میزان پیشرفت با اعمال سرعت
+
+        // اسکرول به موقعیت هدف با توجه به پیشرفت
+        window.scrollTo(0, startPosition + distance * progress);
+
+        if (timeElapsed < duration * speed) {
+            requestAnimationFrame(scrollStep); // ادامه حرکت
+        }
+    }
+
+    // درخواست فریم بعدی برای اسکرول
+    requestAnimationFrame(scrollStep);
+}
+
+    const cardContainer = document.querySelector('.card-container');
+    
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+    let velocity = 0; // سرعت حرکت
+    let momentumID; // شناسایی افکت اینرسی
+    let momentumFactor = 0.1; // ضریب اینرسی برای اسلوموشن بیشتر (کاهش سرعت شدیدتر)
+    let bounceFactor = 0.05; // شدت ارتعاش برای حالت نمایشی
+    
+    // شروع کشیدن
+    cardContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        cardContainer.classList.add('active');
+        startX = e.pageX - cardContainer.offsetLeft;
+        scrollLeft = cardContainer.scrollLeft;
+        velocity = 0; // ریست سرعت
+        cancelMomentum(); // لغو اینرسی قبلی
+    });
+    
+    // پایان کشیدن
+    cardContainer.addEventListener('mouseup', () => {
+        isDragging = false;
+        cardContainer.classList.remove('active');
+        startMomentum(); // شروع انیمیشن اسلوموشن
+    });
+    
+    // خروج موس از کانتینر
+    cardContainer.addEventListener('mouseleave', () => {
+        isDragging = false;
+        cardContainer.classList.remove('active');
+        startMomentum(); // شروع انیمیشن اسلوموشن
+    });
+    
+    // حرکت موس هنگام کشیدن
+    cardContainer.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - cardContainer.offsetLeft;
+        const walk = (x - startX) * 2; // فاصله موس (2x برای سرعت بیشتر و حرکت نمایشی)
+        cardContainer.scrollLeft = scrollLeft - walk;
+    
+        // محاسبه سرعت
+        velocity = walk - velocity; // سرعت تغییر
+    });
+    
+    // اسکرول موس
+    cardContainer.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+            e.preventDefault(); // جلوگیری از اسکرول صفحه
+            const scrollAmount = e.deltaY * 0.5; // سرعت اسکرول موس (نرم‌تر)
+            cardContainer.scrollLeft += scrollAmount;
+    
+            // اعمال حرکت اسلوموشن روی اسکرول
+            velocity = scrollAmount;
+            startMomentum(); // شروع انیمیشن اسلوموشن
+        }
+    });
+    
+    // شروع انیمیشن اسلوموشن با اثر نمایشی
+    function startMomentum() {
+        cancelMomentum();
+        momentumID = requestAnimationFrame(momentumLoop);
+    }
+    
+    // حلقه انیمیشن اسلوموشن با کشش و ارتعاش
+    function momentumLoop() {
+        if (Math.abs(velocity) < 0.1) {
+            cancelMomentum(); // توقف انیمیشن وقتی سرعت کم شود
+            return;
+        }
+    
+        // اضافه کردن کشش برای ارتعاش و حرکت نمایشی
+        cardContainer.scrollLeft -= velocity;
+        velocity *= momentumFactor; // کاهش سرعت با ضریب momentumFactor
+        if (Math.abs(velocity) > 30.5) {
+            cardContainer.scrollLeft += Math.sin(velocity * 10) * 10; // ارتعاش کارت‌ها برای نمایشی بودن حرکت
+        }
+    
+        momentumID = requestAnimationFrame(momentumLoop); // ادامه انیمیشن
+    }
+    
+    // لغو انیمیشن
+    function cancelMomentum() {
+        if (momentumID) {
+            cancelAnimationFrame(momentumID);
+            momentumID = null;
+        }
+    }
+    
+    </script>
+    
+    
+
+
+
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      ربات   -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+    <style>
+        .message {
+            position: fixed;
+            right: 20px;
+            max-width: 300px;
+            background-color: #e6e6e6;
+            color: #333;
+            padding: 10px 15px;
+            margin-top: 130px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.4s ease-out;
+            z-index: 999;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .input-container {
+            display: flex;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            align-items: center;
+            z-index: 10;
+        }
+    
+        .chat-input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    
+        .send-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    
+        /* دکمه Signup */
+        .signup-button {
+            position: fixed;
+            right: 20px;
+            bottom: 80px; /* کمی فاصله برای قرارگیری دکمه بالای فیلد */
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #000000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+    
+        .signup-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+    
+    <button id="signupButton" class="signup-button" onclick="signUp()">Signup</button>
+
+    <div class="input-container">
+        <input type="text" id="chatInput" class="chat-input" placeholder="پیام خود را بنویسید...">
+        <button class="send-button" onclick="sendMessage()">ارسال</button>
+    </div>
+    
+    <script>
+        const chatInput = document.getElementById('chatInput');
+        const signupButton = document.getElementById('signupButton');
+        let messages = [];
+        let messageTopOffset = 20;
+    
+        // مدیریت خطا با استفاده از window.onerror
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error('Error occurred:', error);
+            window.location.href = 'login,signup/login,client.html';  // هدایت کاربر به صفحه login
+            return true;  // برای جلوگیری از نمایش خطا در کنسول
+        };
+    
+        try {
+            // بررسی اینکه آیا دکمه قبلاً کلیک شده است یا خیر
+            if (localStorage.getItem('signupClicked') === 'true') {
+                // تغییر دکمه به پروفایل اگر قبلاً کلیک شده باشد
+                signupButton.innerHTML = '<i class="fas fa-user"></i> Profile';
+                signupButton.setAttribute('href', 'profile.html'); // تغییر مسیر به profile.html
+                signupButton.setAttribute('onclick', 'window.location.href="profile.html"'); // تغییر مسیر به profile.html
+            }
+        } catch (error) {
+            throw error; // در صورت بروز خطا، خطا را پرتاب می‌کنیم تا به window.onerror برسد
+        }
+    
+        // تابع signUp برای ذخیره وضعیت کلیک
+        function signUp() {
+            localStorage.setItem('signupClicked', 'true');  // ذخیره وضعیت کلیک
+            signupButton.innerHTML = '<i class="fas fa-user"></i> Profile'; // تغییر متن دکمه
+            window.location.href = 'profile.html';  // هدایت به صفحه پروفایل
+        }
+    
+        // تابع sendMessage برای ارسال پیام
+        function sendMessage() {
+            let message = chatInput.value;
+            messages.push(message);
+            chatInput.value = ''; // پاک کردن فیلد ورودی
+            console.log(messages);
+        }
+    
+        function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+    
+            chatInput.value = '';
+    
+            // شبیه‌سازی دریافت پیام از سرور
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showBotMessage(data.reply);
+            })
+            .catch(() => {
+                showBotMessage('خطا در ارتباط با سرور.');
+            });
+        }
+    
+        function showBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.style.top = `${messageTopOffset}px`;
+            messageDiv.textContent = text;
+            document.body.appendChild(messageDiv);
+            
+            messages.push(messageDiv);
+            messageTopOffset += messageDiv.offsetHeight + 10;
+    
+            // حذف پیام پس از 30 ثانیه
+            setTimeout(() => {
+                messageDiv.remove();
+                messages = messages.filter(msg => msg !== messageDiv); // حذف پیام از آرایه
+                updateMessagePositions(); // به‌روزرسانی موقعیت باقی‌مانده پیام‌ها
+            }, 10000);
+        }
+    
+        function updateMessagePositions() {
+            let currentOffset = 20;
+            messages.forEach(msg => {
+                msg.style.top = `${currentOffset}px`;
+                currentOffset += msg.offsetHeight + 10;
+            });
+            messageTopOffset = currentOffset; // به‌روزرسانی موقعیت آخرین پیام
+        }
+    
+        function signUp() {
+            // اگر بار اول است، به آدرس هدایت کن
+            if (localStorage.getItem('signupClicked') !== 'true') {
+                window.location.href = 'login,signup/signup,client.html';
+                localStorage.setItem('signupClicked', 'true');
+            }
+        }
+    </script>
+    
+    
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  اکسپلور نمونه کار ها    -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <h1> ایده هاتو رو تقویت کن</h1>
+    <div id="custom-container" class="custom-container"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/js.js"></script>
+
+    
+
+    <script src="js/index.user.js"></script>
+
+</body>
+</html>

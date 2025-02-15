@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login, Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            padding: 15px 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        #goback {
+            background-color: #f1f1f1;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #goback:hover {
+            background-color: #b1b1b1;
+        }
+
+        .signup-container {
+            width: 90%;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            font-size: 26px;
+            color: #f1f1f1;
+            margin-bottom: 30px;
+        }
+
+        .signup-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"] {
+            width: calc(100% - 20px);
+            margin: 12px auto;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #f1f1f1;
+            font-size: 16px;
+        }
+
+        .signup-container input[type="text"]:focus,
+        .signup-container input[type="email"]:focus,
+        .signup-container input[type="password"]:focus {
+            border-color: #aaa;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+            display: none; /* دکمه به‌طور پیش‌فرض مخفی است */
+        }
+
+        .signup-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .signup-container .login-link {
+            display: block;
+            margin-top: 15px;
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .signup-container .login-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            #goback {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            .signup-container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .signup-container h2 {
+                font-size: 22px;
+            }
+
+            .signup-container input[type="text"],
+            .signup-container input[type="email"],
+            .signup-container input[type="password"] {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .signup-container button {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .signup-container .login-link {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 8px 10px;
+            }
+
+            #goback {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .signup-container {
+                padding: 15px;
+            }
+
+            .signup-container h2 {
+                font-size: 20px;
+            }
+
+            .signup-container input[type="text"],
+            .signup-container input[type="email"],
+            .signup-container input[type="password"] {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .signup-container button {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .signup-container .login-link {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        #formsignup {
+            position: relative;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        button[onclick="goBack()"] {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    
+        button[onclick="goBack()"]:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <button onclick="goBack()">GoBack></button>
+
+    <div id="formsignup" class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" id="signupButton">Sign Up</button>
+            
+        </form>
+        <a href="login,client.html" class="login-link">Already have an account? Log In</a>
+    </div>
+
+    <script>
+        const fullnameInput = document.getElementById('fullname');
+        const emailInput = document.getElementById('email');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const signupButton = document.getElementById('signupButton');
+    
+        function toggleSignupButton() {
+            if (
+                fullnameInput.value &&
+                emailInput.value &&
+                usernameInput.value &&
+                passwordInput.value &&
+                confirmPasswordInput.value
+            ) {
+                signupButton.style.display = 'block';
+            } else {
+                signupButton.style.display = 'none';
+            }
+        }
+    
+        fullnameInput.addEventListener('input', toggleSignupButton);
+        emailInput.addEventListener('input', toggleSignupButton);
+        usernameInput.addEventListener('input', toggleSignupButton);
+        passwordInput.addEventListener('input', toggleSignupButton);
+        confirmPasswordInput.addEventListener('input', toggleSignupButton);
+    
+        toggleSignupButton();
+    
+        const form = document.getElementById('signupForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+    
+            const fullname = fullnameInput.value;
+            const email = emailInput.value;
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+    
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ fullname, email, username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.token) {
+                    // ذخیره توکن در localStorage یا sessionStorage
+                    localStorage.setItem('authToken', data.token);
+                    // هدایت به صفحه دیگر بعد از ورود موفق
+                    window.location.href = 'login,client.html'; // به صفحه مناسب هدایت شود
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+            });
+        });
+    </script>
+  
+
+
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!--! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      ربات   -->
+    <!--// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+    <style>
+        .message {
+            position: fixed;
+            right: 20px;
+            max-width: 300px;
+            background-color: #e6e6e6;
+            color: #333;
+            padding: 10px 15px;
+            margin-top: 130px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(26, 25, 25, 0.527);
+            animation: fadeIn 0.4s ease-out;
+            z-index: 999;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .input-container {
+            display: flex;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            align-items: center;
+            z-index: 10;
+        }
+    
+        .chat-input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    
+        .send-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    
+            .home-button {
+                position: fixed;
+                right: 20px;
+                bottom: 80px;
+                background-color: transparent;
+                border: 1px solid #007bff;
+                color: #dcd8d8;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                z-index: 10;
+            }
+        
+            .home-button:hover {
+                background-color: #007bff;
+                color: white;
+            }
+        </style>
+        
+        <button id="homeButton" class="home-button" onclick="goHome()">Home</button>
+
+        <div class="input-container">
+            <input type="text" id="chatInput" class="chat-input" placeholder="پیام خود را بنویسید...">
+            <button class="send-button" onclick="sendMessage()">ارسال</button>
+        </div>
+
+        <script>
+            const chatInput = document.getElementById('chatInput');
+            const homeButton = document.getElementById('homeButton');
+
+            // مدیریت خطا با استفاده از window.onerror
+            window.onerror = function(message, source, lineno, colno, error) {
+                console.error('Error occurred:', error);
+                window.location.href = '../index.html'; // هدایت کاربر به صفحه login
+                return true; // جلوگیری از نمایش خطا در کنسول
+            };
+
+            // بررسی وضعیت دکمه هنگام بارگذاری صفحه
+            try {
+                if (localStorage.getItem('homeClicked') === 'true') {
+                    // تغییر دکمه به حالت "Home"
+                    homeButton.innerHTML = '<i class="fas fa-home"></i> Home';
+                    homeButton.onclick = function() {
+                        window.location.href = '../index.html'; // هدایت به صفحه اصلی
+                    };
+                }
+            } catch (error) {
+                throw error; // ارسال خطا برای مدیریت توسط window.onerror
+            }
+
+            // تابع goHome برای مدیریت کلیک دکمه Home
+            function goHome() {
+                try {
+                    localStorage.setItem('homeClicked', 'true'); // ذخیره وضعیت کلیک
+                    homeButton.innerHTML = '<i class="fas fa-home"></i> Home'; // تغییر متن دکمه
+                    window.location.href = '../index.html'; // هدایت به صفحه اصلی
+                } catch (error) {
+                    console.error('Error during Home redirection:', error);
+                    throw error;
+                }
+            }
+
+        // تابع sendMessage برای ارسال پیام
+        function sendMessage() {
+            let message = chatInput.value;
+            messages.push(message);
+            chatInput.value = ''; // پاک کردن فیلد ورودی
+            console.log(messages);
+        }
+    
+        function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+    
+            chatInput.value = '';
+    
+            // شبیه‌سازی دریافت پیام از سرور
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showBotMessage(data.reply);
+            })
+            .catch(() => {
+                showBotMessage('خطا در ارتباط با سرور.');
+            });
+        }
+    
+        function showBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.style.top = `${messageTopOffset}px`;
+            messageDiv.textContent = text;
+            document.body.appendChild(messageDiv);
+            
+            messages.push(messageDiv);
+            messageTopOffset += messageDiv.offsetHeight + 10;
+    
+            // حذف پیام پس از 30 ثانیه
+            setTimeout(() => {
+                messageDiv.remove();
+                messages = messages.filter(msg => msg !== messageDiv); // حذف پیام از آرایه
+                updateMessagePositions(); // به‌روزرسانی موقعیت باقی‌مانده پیام‌ها
+            }, 10000);
+        }
+    
+        function updateMessagePositions() {
+            let currentOffset = 20;
+            messages.forEach(msg => {
+                msg.style.top = `${currentOffset}px`;
+                currentOffset += msg.offsetHeight + 10;
+            });
+            messageTopOffset = currentOffset; // به‌روزرسانی موقعیت آخرین پیام
+        }
+    
+
+    </script>
+    
+    
+
+
+
+</body>
+</html>

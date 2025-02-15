@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login.html</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+#goback {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#goback:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+#loginform {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+#loginform h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+#loginform .input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#loginform .input-container input {
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    border: 2px solid #555;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#loginform .input-container input:focus {
+    border-color: #00b8ff;
+    box-shadow: 0 0 10px rgba(0, 184, 255, 0.6);
+    color: #fff;
+}
+
+#loginform .input-container label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+#loginform .input-container input:focus + label,
+#loginform .input-container input:not(:placeholder-shown) + label {
+    top: -12px;
+    font-size: 12px;
+    color: #00b8ff;
+}
+
+#loginform button {
+    width: 100%;
+    padding: 15px;
+    background-color: #00b8ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: none;
+}
+
+#loginform button:hover {
+    background-color: #008ec4;
+}
+
+#loginform .forgot-password {
+    display: block;
+    margin-top: 15px;
+    color: #00b8ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#loginform .forgot-password:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <style>
+        #formlogin {
+            position: relative;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        button[onclick="goBack()"] {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    
+        button[onclick="goBack()"]:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+    
+    <button onclick="goBack()">GoBack></button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <div id="loginform">
+        <h2>Login</h2>
+        <form>
+            <div class="input-container">
+                <input type="text" id="username" name="username" placeholder=" " autocomplete="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" name="password" placeholder=" " autocomplete="current-password" required>
+                <label for="password">Password</label>
+            </div>
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+        
+        
+        <a href="#" class="forgot-password">Forgot your password?</a>
+        <div style="font-size: 10px; text-align: center;">
+
+            <p style="font-size: 14px;">
+                <b style="font-size: 16px;">Don't have an account?</b> 
+                <a href="signup,client.html" style="text-decoration: none; color: blue; font-size: 14px;">Sign Up</a>
+              </p>
+              
+          </div>
+    </div>
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+    
+        function toggleLoginButton() {
+            if (usernameInput.value && passwordInput.value) {
+                loginButton.style.display = 'block';
+            } else {
+                loginButton.style.display = 'none';
+            }
+        }
+    
+        // Add event listeners for input fields
+        usernameInput.addEventListener('input', toggleLoginButton);
+        passwordInput.addEventListener('input', toggleLoginButton);
+    
+        // Initially check if the button should be shown
+        toggleLoginButton();
+    
+        const loginForm = document.querySelector('form');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+    
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+    
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.redirect) {
+                    // ذخیره کوکی پس از ورود موفق
+                    setUserCookie(username);
+    
+                    // انتقال به صفحه مقصد
+                    window.location.href = data.redirect;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch((err) => console.error('Error logging in:', err));
+        });
+    
+        // تابع ذخیره کوکی
+        function setUserCookie(username) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (60 * 60 * 1000)); // 1 ساعت بعد منقضی می‌شود
+            document.cookie = `username=${username}; path=/; expires=${expires.toUTCString()}`;
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- ?______________ربات چت ___________________! -->
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+
+
+    <style>
+        .message {
+            position: fixed;
+            right: 20px;
+            max-width: 300px;
+            background-color: #e6e6e6;
+            color: #333;
+            padding: 10px 15px;
+            margin-top: 130px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.4s ease-out;
+            z-index: 999;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .input-container {
+            display: flex;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            align-items: center;
+            z-index: 10;
+        }
+    
+        .chat-input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    
+        .send-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    
+        /* دکمه Signup */
+        .signup-button {
+            position: fixed;
+            right: 20px;
+            bottom: 80px; /* کمی فاصله برای قرارگیری دکمه بالای فیلد */
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #f8f2f2;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+    
+        .signup-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+  <button id="signupButton" class="signup-button" onclick="goToHome()">Home</button>
+
+  <div class="input-container">
+      <input type="text" id="chatInput" class="chat-input" placeholder="پیام خود را بنویسید...">
+      <button class="send-button" onclick="sendMessage()">ارسال</button>
+  </div>
+  
+  <script>
+      const chatInput = document.getElementById('chatInput');
+      const signupButton = document.getElementById('signupButton');
+      let messages = [];
+      let messageTopOffset = 20;
+  
+      // تغییر دکمه به Home
+      function goToHome() {
+          window.location = '../index.html'; // لینک صفحه‌ی Home
+      }
+  
+      // بررسی کلیک دکمه Signup
+      if (localStorage.getItem('signupClicked') === 'true') {
+          signupButton.innerHTML = 'Home';
+          signupButton.setAttribute('onclick', 'goToHome()');
+      }
+  
+    
+        function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+    
+            chatInput.value = '';
+    
+            // شبیه‌سازی دریافت پیام از سرور
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showBotMessage(data.reply);
+            })
+            .catch(() => {
+                showBotMessage('خطا در ارتباط با سرور.');
+            });
+        }
+    
+        function showBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.style.top = `${messageTopOffset}px`;
+            messageDiv.textContent = text;
+            document.body.appendChild(messageDiv);
+            
+            messages.push(messageDiv);
+            messageTopOffset += messageDiv.offsetHeight + 10;
+    
+            // حذف پیام پس از 30 ثانیه
+            setTimeout(() => {
+                messageDiv.remove();
+                messages = messages.filter(msg => msg !== messageDiv); // حذف پیام از آرایه
+                updateMessagePositions(); // به‌روزرسانی موقعیت باقی‌مانده پیام‌ها
+            }, 10000);
+        }
+    
+        function updateMessagePositions() {
+            let currentOffset = 20;
+            messages.forEach(msg => {
+                msg.style.top = `${currentOffset}px`;
+                currentOffset += msg.offsetHeight + 10;
+            });
+            messageTopOffset = currentOffset; // به‌روزرسانی موقعیت آخرین پیام
+        }
+    
+
+    </script>
+
+
+
+
+    
+
+
+
+</body>
+</html>

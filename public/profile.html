@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل کاربر حرفه‌ای</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+
+
+</head>
+<body>
+
+
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- ?_____________قسمت پرفایل کامل ___________! -->
+
+    <!-- !@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="image/Screenshot 2025-01-06 134014.jpeg" alt="تصویر پروفایل">
+            <div>
+            </div>
+            <div class="info-icon">
+                <a><span>Membership date:1402/01/01</span></a>
+                <a>Email:<span id="email"></span></a>
+                <a>Fullname:<span id="fullname"></span> </a>
+                <a>Username:<span id="username"></span></a>
+            </div>
+        </div>
+        
+    
+        <div class="profile-content">
+            <div class="profile-main">
+                <div class="profile-actions">
+ 
+        
+                
+
+
+                      <!-- !############################################################################### -->
+
+                    <div class="tabs">
+                        <div class="tab active" onclick="showTab(0)">وضعیت</div>
+                        <div class="tab" onclick="showTab(1)">افزونهام</div>
+                        <div class="tab" onclick="showTab(2)">کثب درامد</div>
+                        <div class="tab" onclick="showTab(3)">ممکن ها</div>
+                    </div>
+                    <!-- !############################################################################### -->
+
+
+                    <!-- !############################################################################### -->
+                    <div class="tab-content">
+                
+                    
+                        <style>
+
+                    
+                            #projects-container {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+                                padding: 20px;
+                            }
+                    
+                            .project-item {
+                                background-color: #f9f9f9;
+                                border: 1px solid #ddd;
+                                border-radius: 8px;
+                                padding: 10px;
+                                cursor: pointer;
+                                transition: background-color 0.3s ease;
+                            }
+                    
+                            .project-item:hover {
+                                background-color: #f1f1f1;
+                            }
+                    
+                            .project-item p {
+                                font-size: 14px;
+                                color: #333;
+                                margin: 5px 0;
+                                display: none; /* مخفی کردن اطلاعات جزئی */
+                            }
+                    
+                            /* نمایش اطلاعات جزئی وقتی که دکمه کلیک شده باشد */
+                            .project-item.open p {
+                                display: block;
+                            }
+                    
+                            /* استایل برای دکمه مشخصات پروژه */
+                            .project-item .show-details {
+                                background-color: #4CAF50;
+                                color: white;
+                                border: none;
+                                padding: 10px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 14px;
+                                width: 100%;
+                                margin-top: 10px;
+                                transition: background-color 0.3s ease;
+                            }
+                    
+                            .project-item .show-details:hover {
+                                background-color: #45a049;
+                            }
+                    
+                            /* استایل برای بخش اطلاعات مدیر */
+                            #admin-info {
+                                margin-top: 30px;
+                                padding: 20px;
+                                background-color: #f3f3f3;
+                                border-radius: 8px;
+                                border: 1px solid #ddd;
+                                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                            }
+                    
+                            #admin-info h2 {
+                                font-size: 24px;
+                                color: #333;
+                                margin-bottom: 15px;
+                            }
+                    
+                            #admin-info p {
+                                font-size: 16px;
+                                color: #555;
+                                margin: 10px 0;
+                            }
+                    
+                            .payment-info, .payment-action {
+                                margin: 20px 0;
+                            }
+                    
+                            .payment-button {
+                                background-color: #007BFF;
+                                color: white;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 5px;
+                                font-size: 14px;
+                                cursor: pointer;
+                                transition: background-color 0.3s ease;
+                            }
+                    
+                            .payment-button:hover {
+                                background-color: #0056b3;
+                            }
+                        </style>
+       
+                                        
+
+
+            
+                        <!-- هدر -->
+                        <div class="headerr"></div>
+                        <div id="projects-container">
+                            <p>اطلاعات بیشتر</p>
+                        </div>   
+                        <!-- منو -->
+                        <div class="navi">
+                            <a href="#home"></a>
+                            <a href="#about"></a>
+                            <a href="#products"></a>
+                            <a href="#contact"></a>
+                        </div>
+                    
+                        <!-- محتوای اصلی -->
+                        <div class="content">
+                            <h2></h2>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    
+                        <!-- فوتر -->
+                        <div class="footerr"></div>
+                    
+                        <!-- لودینگ پیشرفته -->
+                        <div class="advanced-loading">
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                            <div class="loading-bar"></div>
+                        </div>
+
+
+
+
+                          
+                    </div>
+                    </div>
+                    
+                    <!-- !############################################################################### -->
+
+                    <div class="tab-content">
+
+                        <div class="professional-container">
+                            <div class="professional-header">
+                                <h1> لینک خودتو به اشتراک بزار </h1>
+                                <hr style="color: #ddd;">
+                                <p style="color: #fdf5f5;">
+                                    <b>
+                                        این راه ساده و هوشمندانه‌ای برای کسب درآمد و کمک به دوستانتان <br>
+                                        برای بهره‌مندی از خدماتی است که شما به آن اعتماد دارید.
+                                    </b>
+                                </p>
+                            </div>
+                            
+                            
+                        
+                            <div class="payment-cards">
+                                <div class="payment-card" onclick="showForm('paypal')">
+                                    <img src="https://via.placeholder.com/80?text=PayPal" alt="PayPal">
+                                    <h3>پی‌پل</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('card')">
+                                    <img src="https://via.placeholder.com/80?text=Card" alt="Card">
+                                    <h3>کارت بانکی</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('card')">
+                                    <img src="https://via.placeholder.com/80?text=Card" alt="Card">
+                                    <h3>کارت بانکی</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('crypto')">
+                                    <img src="https://via.placeholder.com/80?text=Crypto" alt="Crypto">
+                                    <h3>کریپتو</h3>
+                                </div>
+                            </div>
+                        
+                            <div id="paypal-form" class="form-container">
+                                <h3>ورود اطلاعات پی‌پل</h3>
+                                <label for="paypal-email">ایمیل پی‌پل:</label>
+                                <input type="email" id="paypal-email" placeholder="ایمیل خود را وارد کنید">
+                                <button onclick="generateReferralCode()">ثبت اطلاعات</button>
+                            </div>
+                        
+                            <div id="card-form" class="form-container">
+                                <h3>ورود اطلاعات کارت بانکی</h3>
+                                <label for="card-number">شماره کارت:</label>
+                                <input type="text" id="card-number" placeholder="1234-5678-9123-4567">
+                                <label for="card-name">نام دارنده کارت:</label>
+                                <input type="text" id="card-name" placeholder="نام خود را وارد کنید">
+                                <button onclick="generateReferralCode()">ثبت اطلاعات</button>
+                            </div>
+                        
+                            <div id="crypto-form" class="form-container">
+                                <h3>ورود آدرس کیف پول</h3>
+                                <label for="crypto-wallet">آدرس کیف پول:</label>
+                                <input type="text" id="crypto-wallet" placeholder="آدرس کیف پول خود را وارد کنید">
+                                <button onclick="generateReferralCode()">ثبت اطلاعات</button>
+                            </div>
+                        
+                            <div id="referral-info" class="referral-code-box">
+                                <p id="referral-code">REF-XXXXXXX</p>
+                            </div>
+                        
+                            <div class="cta-section">
+                                <h2>شروع کنید</h2>
+                                <p>همین حالا از امکانات حرفه‌ای ما بهره‌مند شوید.</p>
+                                <button class="cta-button" onclick="startCollaboration()">شروع</button>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            function showForm(method) {
+                                document.getElementById('paypal-form').style.display = 'none';
+                                document.getElementById('card-form').style.display = 'none';
+                                document.getElementById('crypto-form').style.display = 'none';
+                                document.getElementById(`${method}-form`).style.display = 'block';
+                            }
+                        
+                            function generateReferralCode() {
+                                const referralCode = 'REF-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+                                document.getElementById('referral-code').textContent = referralCode;
+                                document.getElementById('referral-info').style.display = 'block';
+                            }
+                        
+                            function startCollaboration() {
+                                alert("برای استفاده، اطلاعات خود را ثبت کنید.");
+                            }
+                        </script>
+                        
+                    
+                    </div>
+                    
+                    <!-- !############################################################################### -->
+
+                    <div class="tab-content">
+
+                        <div class="professional-container">
+                            <div class="professional-header">
+                                <h1> ایده هاتودستگیر کن </h1>
+                                <hr style="color: #ddd;">
+                                <p style="color: #fdf5f5;">
+                                    <b>
+                                    این راه ساده<br>
+                                        
+                                    </b>
+                                </p>
+                            </div>
+                            
+                            
+                        
+                            <div class="payment-cards">
+                                <div class="payment-card" onclick="showForm('paypal')">
+                                    <img src="https://via.placeholder.com/80?text=PayPal" alt="PayPal">
+                                    <h3>پی‌پل</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('card')">
+                                    <img src="https://via.placeholder.com/80?text=Card" alt="Card">
+                                    <h3>کارت بانکی</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('card')">
+                                    <img src="https://via.placeholder.com/80?text=Card" alt="Card">
+                                    <h3>کارت بانکی</h3>
+                                </div>
+                                <div class="payment-card" onclick="showForm('crypto')">
+                                    <img src="https://via.placeholder.com/80?text=Crypto" alt="Crypto">
+                                    <h3>کریپتو</h3>
+                                </div>
+                            </div>
+ 
+                        
+                            <div class="cta-section">
+                                <h2>شروع کنید</h2>
+                                <p>همین حالا از امکانات حرفه‌ای ما بهره‌مند شوید.</p>
+                                <button class="cta-button" onclick="startCollaboration()">شروع</button>
+                            </div>
+                        </div>
+ 
+                        
+                    </div>
+                    <!-- !############################################################################### -->
+
+
+
+    
+
+    
+        
+    </div>
+    <!-- <div class="container">
+        <div class="profile-info">
+            <p>کلمه عبور: <span id="password"></span></p>
+        </div>
+    </div> -->
+
+
+
+
+
+
+</head>
+<body>
+    <nav id="menu">
+        <div class="burger" id="menu-button">
+            <div class="burger__patty"></div>
+            <div class="burger__patty"></div>
+            <div class="burger__patty"></div>
+        </div>
+
+        <ul class="nav__list">
+            <li class="menu-item" onclick="showRobotIcons()"><a href="#"><i class="material-icons">android</i><span>ربات</span></a></li>
+            <li class="menu-item"><a href="index.html"><i class="material-icons">home</i><span>خانه</span></a></li>
+            <li class="menu-item"><a href="#"><i class="material-icons">extension</i><span>افزونه</span></a></li>
+            <li class="menu-item" id="logoutButton">
+                <a href="javascript:void(0);">
+                    <i class="material-icons">logout</i>
+                    <span>خروج</span>
+                </a>
+            </li>
+            <li class="menu-item"><a href="index.html#target"><i class="material-icons">palette</i><span>قالب‌ها</span></a></li>
+            <li class="menu-item">
+                <a href="#" id="change-password-btn">
+                    <i class="material-icons">vpn_key</i><span>تغییر پسورد</span>
+                </a>
+            </li>
+        
+    
+        <!-- Modal for changing password -->
+        <div id="password-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn" id="close-modal-btn">&times;</span>
+                <form id="password-form">
+                    <div class="input-container">
+                        <input type="text" id="username" name="username" placeholder=" " required>
+                        <label for="username">نام کاربری</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="current-password" name="current-password" placeholder=" " required>
+                        <label for="current-password">رمز فعلی</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="new-password" name="new-password" placeholder=" " required>
+                        <label for="new-password">رمز جدید</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder=" " required>
+                        <label for="confirm-password">تایید رمز</label>
+                    </div>
+                    <button type="submit" class="submit-btn" disabled>ذخیره</button>
+                </form>
+            </div>
+        </div>
+
+        </ul>
+    
+            
+
+
+
+        <div class="robot-container" id="robot-icons">
+            <div class="robot-row">
+                <div class="robot-icon">
+                    <i class="material-icons">search</i>
+                    <span>ربات جستجو</span>
+                    <p>ربات جستجو برای پیدا کردن محتوای سایت شما به کار می‌رود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">photo</i>
+                    <span>ربات گرافیکی</span>
+                    <p>این ربات برای تولید و مدیریت تصاویر در وب‌سایت‌ها استفاده می‌شود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">search</i>
+                    <span>ربات جستجو</span>
+                    <p>ربات جستجو برای پیدا کردن محتوای سایت شما به کار می‌رود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">photo</i>
+                    <span>ربات گرافیکی</span>
+                    <p>این ربات برای تولید و مدیریت تصاویر در وب‌سایت‌ها استفاده می‌شود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">search</i>
+                    <span>ربات جستجو</span>
+                    <p>ربات جستجو برای پیدا کردن محتوای سایت شما به کار می‌رود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">photo</i>
+                    <span>ربات گرافیکی</span>
+                    <p>این ربات برای تولید و مدیریت تصاویر در وب‌سایت‌ها استفاده می‌شود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">search</i>
+                    <span>ربات جستجو</span>
+                    <p>ربات جستجو برای پیدا کردن محتوای سایت شما به کار می‌رود.</p>
+                </div>
+                <div class="robot-icon">
+                    <i class="material-icons">photo</i>
+                    <span>ربات گرافیکی</span>
+                    <p>این ربات برای تولید و مدیریت تصاویر در وب‌سایت‌ها استفاده می‌شود.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه برگشت -->
+        <button class="back-button" onclick="backToMenu()">بازگشت</button>
+    </nav>
+  
+    <script src="js/profile.js"></script>
+</body>
+</html>
